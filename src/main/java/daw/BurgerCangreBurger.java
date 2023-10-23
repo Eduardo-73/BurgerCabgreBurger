@@ -35,11 +35,11 @@ public class BurgerCangreBurger {
         numPedido = teclado.nextInt();
 
         for (int i = 0; i < numPedido; i++) {
-            System.out.println("introduce el precio del " + (i + 1) + "º producto");
+            System.out.println("Introduce el precio del " + (i + 1) + "º producto");
             precio = teclado.nextDouble();
             total += precio;
         }
-        System.out.printf("El total de tu pedido es de %.2f €\n", total);
+        System.out.printf("El total de tu pedido es de %.2f€\n", total);
         return total;
     }
 
@@ -63,10 +63,11 @@ public class BurgerCangreBurger {
         String nombre = teclado.nextLine();
         System.out.println("Dime tu 1º apellido: ");
         String apellido = teclado.nextLine();
-        System.out.printf("Bienvenido %s %s\n", nombre, apellido);
+        System.out.printf("Bienvenido %s %s"
+                + " a BurgerCangreBurger\n", nombre, apellido);
     }
 
-    private static boolean parImpar(int numero, double total) {
+    private static void parImpar(int numeroDado, double total) {
         /*
         creo un método que devuelve un boolean, se le debe de introducir la tirada
         del dado y el total de el pedido, creo un if-else, en el primer caso 
@@ -77,12 +78,11 @@ public class BurgerCangreBurger {
         final double IVA_PAR = 0.25, IVA_AMARILLA = 0.5, IVA_ROJA = 0.12;
         //final int DIVISION = 100;
         double resultado;
-        if (numero % 2 == 0) {
+        if (numeroDado % 2 == 0) {
             System.out.println("La tirada ha salido par, tienes un descuento"
                     + " del %25");
-            resultado = total * IVA_PAR;
+            resultado = total - (total * IVA_PAR);
             System.out.printf("%.2f€\n", resultado);
-            return true;
         } else {
             System.out.println("La tirada ha salido impar, "
                     + "debes sacar una bola (blanco, roja y amrilla) ");
@@ -94,16 +94,15 @@ public class BurgerCangreBurger {
                 }
                 case 2 -> {
                     System.out.println("¡ROJO! Tienes un descuento del %12 ");
-                    resultado = total * IVA_ROJA;
+                    resultado = total - (total * IVA_ROJA);
                     System.out.printf("%.2f€\n", resultado);
                 }
                 case 3 -> {
                     System.out.println("¡AMARILLO! Tienes un descuento del %5 ");
-                    resultado = total * IVA_AMARILLA;
+                    resultado = total - (total * IVA_AMARILLA);
                     System.out.printf("%.2f€\n", resultado);
                 }
             }
-            return false;
         }
     }
 }
